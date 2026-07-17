@@ -1,0 +1,19 @@
+.miniMapWrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #cbd5e1;
+  position: relative;
+  width: 100%;
+}
+
+.noCoordinates {
+  border-radius: 12px;
+  border: 1px dashed #cbd5e1;
+  background: #f8fafc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #64748b;
+  font-size: 0.85rem;
+  width: 100%;
+}

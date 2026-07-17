@@ -1,0 +1,97 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+  white-space: nowrap;
+}
+
+/* Submitted */
+.submitted {
+  color: #c2410c;
+  background-color: #ffedd5;
+  border: 1px solid rgba(194, 65, 12, 0.1);
+}
+
+/* Under Review */
+.underreview {
+  color: #b45309;
+  background-color: #fef3c7;
+  border: 1px solid rgba(180, 83, 9, 0.1);
+}
+
+/* Approved */
+.approved {
+  color: #0f766e;
+  background-color: #ccfbf1;
+  border: 1px solid rgba(15, 118, 110, 0.1);
+}
+
+/* Assigned */
+.assigned {
+  color: #4338ca;
+  background-color: #e0e7ff;
+  border: 1px solid rgba(67, 56, 202, 0.1);
+}
+
+/* Accepted */
+.accepted {
+  color: #1d4ed8;
+  background-color: #dbeafe;
+  border: 1px solid rgba(29, 78, 216, 0.1);
+}
+
+/* Travelling */
+.travelling {
+  color: #6d28d9;
+  background-color: #f3e8ff;
+  border: 1px solid rgba(109, 40, 217, 0.1);
+}
+
+/* Work Started */
+.workstarted {
+  color: #0369a1;
+  background-color: #e0f2fe;
+  border: 1px solid rgba(3, 105, 161, 0.1);
+}
+
+/* In Progress */
+.inprogress {
+  color: #1e3a8a;
+  background-color: #eff6ff;
+  border: 1px solid rgba(30, 58, 138, 0.1);
+}
+
+/* Completed */
+.completed {
+  color: #047857;
+  background-color: #d1fae5;
+  border: 1px solid rgba(4, 120, 87, 0.1);
+}
+
+/* Waiting Verification */
+.waitingverification {
+  color: #065f46;
+  background-color: #ecfdf5;
+  border: 1px solid rgba(6, 95, 70, 0.15);
+}
+
+/* Closed */
+.closed {
+  color: #475569;
+  background-color: #f1f5f9;
+  border: 1px solid rgba(71, 85, 105, 0.1);
+}
+
+/* Rejected */
+.rejected {
+  color: #b91c1c;
+  background-color: #fee2e2;
+  border: 1px solid rgba(185, 28, 28, 0.1);
+}

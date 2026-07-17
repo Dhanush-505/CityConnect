@@ -1,0 +1,86 @@
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1rem;
+  border: 1px solid rgba(15, 76, 129, 0.08);
+  box-shadow: 0 4px 15px rgba(15, 76, 129, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.titleInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.time {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.info {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.success {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.warning {
+  background: #fffbeb;
+  color: #d97706;
+}
+
+.danger {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.detail {
+  font-size: 0.85rem;
+  color: #475569;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.imageContainer {
+  margin-top: 0.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 320px;
+  border: 1px solid #f1f5f9;
+}
+
+.imageContainer img {
+  width: 100%;
+  height: auto;
+  display: block;
+}

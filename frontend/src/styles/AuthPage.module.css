@@ -1,0 +1,86 @@
+.authPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  padding: 1rem;
+}
+
+.formCard {
+  width: 100%;
+  max-width: 520px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(15, 76, 129, 0.08);
+  padding: 2rem;
+}
+
+.formCard h2 {
+  margin-bottom: 1.25rem;
+  color: #0f4c81;
+  text-align: center;
+}
+
+.form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form input,
+.selectLabel select {
+  width: 100%;
+  border: 1px solid #dbe3ec;
+  border-radius: 10px;
+  padding: 0.8rem 0.9rem;
+  font-size: 0.95rem;
+}
+
+.selectLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  color: #1f2937;
+  font-size: 0.95rem;
+}
+
+.errorMessage {
+  color: #dc2626;
+  font-size: 0.85rem;
+}
+
+.switchAuth {
+  margin-top: 1rem;
+  text-align: center;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.switchAuth a {
+  color: #0f4c81;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.switchAuth a:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 640px) {
+  .authPage {
+    min-height: 100vh;
+    padding: 0.5rem;
+  }
+
+  .formCard {
+    padding: 1.5rem;
+  }
+
+  .formCard h2 {
+    font-size: 1.5rem;
+  }
+
+  .form {
+    gap: 0.85rem;
+  }
+}

@@ -1,0 +1,161 @@
+.timelineContainer {
+  padding: 1rem 0;
+}
+
+.rejectedBanner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  color: #b91c1c;
+}
+
+.rejectedIcon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.rejectedBanner h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.rejectedBanner p {
+  margin: 0.15rem 0 0;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+.timelineList {
+  display: flex;
+  flex-direction: column;
+}
+
+.timelineItem {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+  min-height: 70px;
+}
+
+.iconColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 28px;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  background: #ffffff;
+  border-radius: 50%;
+}
+
+.completedIcon {
+  font-size: 1.6rem;
+  color: #10b981; /* Emerald green */
+  filter: drop-shadow(0 2px 4px rgba(16, 185, 129, 0.25));
+}
+
+.currentIcon {
+  font-size: 1.6rem;
+  color: #2563eb; /* Royal blue */
+  animation: pulse 2s infinite ease-in-out;
+  filter: drop-shadow(0 2px 8px rgba(37, 99, 235, 0.4));
+}
+
+.futureIcon {
+  font-size: 1.4rem;
+  color: #cbd5e1; /* Slate gray */
+  background: #ffffff;
+}
+
+.line {
+  width: 2px;
+  flex-grow: 1;
+  background: #e2e8f0;
+  margin: 4px 0;
+  z-index: 1;
+}
+
+.completed .line {
+  background: #10b981;
+}
+
+.contentColumn {
+  padding-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.stepLabel {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #64748b;
+  transition: color 0.2s ease;
+}
+
+.completed .stepLabel {
+  color: #0f172a;
+}
+
+.current .stepLabel {
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.stepMeta {
+  margin-top: 0.35rem;
+  background: rgba(15, 76, 129, 0.03);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(15, 76, 129, 0.05);
+}
+
+.current .stepMeta {
+  background: rgba(37, 99, 235, 0.04);
+  border-color: rgba(37, 99, 235, 0.1);
+}
+
+.timestamp {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.remarks {
+  font-size: 0.85rem;
+  color: #475569;
+  margin: 0.25rem 0 0 0;
+  line-height: 1.4;
+}
+
+.pendingStatus {
+  font-size: 0.8rem;
+  color: #2563eb;
+  font-style: italic;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+  }
+}

@@ -1,0 +1,159 @@
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+  padding: 1.5rem;
+  backdrop-filter: blur(4px);
+}
+
+.modalContent {
+  background: #ffffff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #f1f5f9;
+  background: #f8fafc;
+}
+
+.modalHeader h2 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+.closeBtn {
+  background: transparent;
+  border: none;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: #64748b;
+  cursor: pointer;
+  padding: 0;
+}
+
+.closeBtn:hover {
+  color: #ef4444;
+}
+
+.modalBody {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  min-height: 400px;
+}
+
+@media (max-width: 640px) {
+  .modalBody {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mapContainer {
+  height: 100%;
+  min-height: 350px;
+  position: relative;
+  background: #f1f5f9;
+}
+
+.infoSection {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: #ffffff;
+  border-left: 1px solid #f1f5f9;
+}
+
+.addressBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.addressBox h3 {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin: 0;
+  letter-spacing: 0.03em;
+}
+
+.addressBox p {
+  font-size: 0.95rem;
+  color: #334155;
+  margin: 0;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.landmark {
+  font-size: 0.85rem;
+  color: #0f4c81;
+  background: rgba(15, 76, 129, 0.05);
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+}
+
+.coordsBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: #475569;
+  background: #f8fafc;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.actionsRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.copyBtn, .navBtn {
+  width: 100%;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: opacity 0.2s ease;
+}
+
+.copyBtn {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+.navBtn {
+  background: #0f4c81;
+  color: #ffffff;
+}
+
+.copyBtn:hover:not(:disabled), .navBtn:hover {
+  opacity: 0.9;
+}

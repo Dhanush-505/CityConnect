@@ -1,0 +1,50 @@
+.adminShell { min-height: 100vh; display: flex; background: #f4f8fc; color: #10233c; }
+.sidebar { width: 270px; min-width: 270px; background: linear-gradient(180deg, #0f4c81 0%, #083b63 100%); color: #fff; padding: 1.2rem 1rem; display: flex; flex-direction: column; gap: 1rem; transition: transform 0.3s ease; }
+.sidebarHeader, .sidebarFooter { display: flex; justify-content: space-between; align-items: center; }
+.brandLabel { font-size: 1.15rem; font-weight: 700; }
+.brandTag { font-size: 0.86rem; color: rgba(255,255,255,0.8); }
+.closeButton, .menuButton, .iconButton, .profileChip, .logoutButton, .primaryButton, .secondaryButton, .textButton { border: 0; cursor: pointer; }
+.closeButton, .menuButton, .iconButton { width: 42px; height: 42px; border-radius: 12px; background: rgba(255,255,255,0.16); color: white; display: grid; place-items: center; }
+.navList { display: flex; flex-direction: column; gap: 0.35rem; }
+.navItem { display: flex; align-items: center; gap: 0.75rem; border: 0; background: transparent; color: rgba(255,255,255,0.9); padding: 0.8rem 0.85rem; border-radius: 12px; text-align: left; cursor: pointer; }
+.navItem:hover { background: rgba(255,255,255,0.14); }
+.logoutButton { width: 100%; display: flex; justify-content: center; align-items: center; gap: 0.45rem; padding: 0.8rem; border-radius: 12px; background: rgba(255,255,255,0.16); color: white; }
+.contentArea { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.topbar { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem 1.25rem; background: rgba(255,255,255,0.95); border-bottom: 1px solid rgba(15,76,129,0.14); align-items: center; }
+.topbarLeft { display: flex; gap: 0.9rem; align-items: center; }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.74rem; color: #0f4c81; font-weight: 700; }
+.topbarRight { display: flex; gap: 0.7rem; align-items: center; flex-wrap: wrap; }
+.selectWrap, .searchWrap { display: flex; gap: 0.4rem; align-items: center; background: #f4f8fc; padding: 0.7rem 0.8rem; border-radius: 12px; border: 1px solid rgba(15,76,129,0.15); }
+.selectWrap select, .searchWrap input { border: 0; background: transparent; outline: none; color: #10233c; }
+.searchWrap { min-width: 260px; }
+.profileChip { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, #0f4c81, #3ddc97); color: white; font-weight: 700; }
+.mainGrid { display: grid; gap: 1rem; padding: 1rem 1.25rem 1.5rem; }
+.heroCard, .panel, .statCard { background: white; border-radius: 22px; padding: 1rem 1.1rem; box-shadow: 0 16px 38px rgba(15,76,129,0.08); }
+.heroCard { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.primaryButton, .secondaryButton { padding: 0.75rem 1rem; border-radius: 999px; color: white; background: linear-gradient(135deg, #0f4c81, #3d9dfc); }
+.secondaryButton { background: #f4f8fc; color: #0f4c81; }
+.cardsGrid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.85rem; }
+.statCard { display: grid; gap: 0.25rem; }
+.statCard h3 { font-size: 1.35rem; }
+.statCard span { color: #5b6b7f; font-size: 0.86rem; }
+.panelHeader { display: flex; justify-content: space-between; align-items: center; }
+.tableWrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 720px; }
+th, td { text-align: left; padding: 0.75rem 0.6rem; border-bottom: 1px solid #e8eef4; }
+.badge { display: inline-flex; padding: 0.3rem 0.6rem; border-radius: 999px; font-size: 0.78rem; }
+.high { background: #ffe7e7; color: #b54242; }
+.medium { background: #eef5ff; color: #0f4c81; }
+.pending { background: #fff2d9; color: #b37a00; }
+.assigned { background: #e8f5ff; color: #0b6aa8; }
+.inProgress { background: #eefaf2; color: #16764c; }
+.textButton { display: inline-flex; align-items: center; gap: 0.25rem; background: transparent; color: #0f4c81; }
+@media (max-width: 1200px) { .cardsGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 900px) { .sidebar { position: fixed; left: 0; top: 0; height: 100vh; transform: translateX(-100%); z-index: 40; box-shadow: 24px 0 50px rgba(0,0,0,0.18); } .sidebarOpen { transform: translateX(0); } .topbar { flex-direction: column; align-items: stretch; } .topbarRight { justify-content: flex-start; } .heroCard { flex-direction: column; align-items: flex-start; } }
+@media (max-width: 640px) { .cardsGrid { grid-template-columns: 1fr; } .searchWrap { min-width: 0; width: 100%; } .topbarRight { flex-direction: column; align-items: stretch; } .panelHeader { flex-direction: column; align-items: flex-start; gap: 0.5rem; } }
+
+.activeNavItem {
+  background: rgba(255, 255, 255, 0.25) !important;
+  font-weight: 700;
+  color: #ffffff !important;
+}
+

@@ -1,0 +1,143 @@
+.verificationCard {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 1.25rem;
+  box-shadow: 0 10px 25px rgba(15, 76, 129, 0.05);
+  border: 1px solid rgba(220, 38, 38, 0.15); /* Light red border as alert warning */
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #991b1b; /* Rich red title */
+  margin: 0;
+}
+
+.description {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.proofSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: #f8fafc;
+  padding: 0.75rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.proofImage {
+  width: 100%;
+  max-height: 250px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #cbd5e1;
+}
+
+.proofImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #0f172a;
+}
+
+.notes {
+  font-size: 0.85rem;
+  color: #334155;
+  line-height: 1.4;
+  padding-top: 0.25rem;
+}
+
+.noProof {
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px dashed #cbd5e1;
+  text-align: center;
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.actionForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.textareaLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.textareaLabel span {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #334155;
+}
+
+.textareaLabel textarea {
+  min-height: 80px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  padding: 0.6rem;
+  font: inherit;
+  font-size: 0.85rem;
+  resize: vertical;
+}
+
+.textareaLabel textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.btnRow {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn {
+  flex: 1;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.reject {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid rgba(185, 28, 28, 0.15);
+}
+
+.approve {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.btn:hover:not(:disabled) {
+  opacity: 0.88;
+}

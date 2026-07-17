@@ -1,0 +1,191 @@
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid rgba(15, 76, 129, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.leftGroup {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.menuButton {
+  border: none;
+  background: rgba(15, 76, 129, 0.08);
+  color: #0f4c81;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.brand {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f4c81;
+}
+
+.searchGroup {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #f6f8ff;
+  border: 1px solid rgba(15, 76, 129, 0.08);
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+}
+
+.searchIcon {
+  color: #0f4c81;
+}
+
+.searchGroup input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #1f1f1f;
+  font-size: 1rem;
+}
+
+.rightGroup {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.themeButton,
+.notificationButton {
+  position: relative;
+  border: none;
+  background: rgba(15, 76, 129, 0.08);
+  padding: 0.9rem;
+  border-radius: 14px;
+  cursor: pointer;
+  color: #0f4c81;
+}
+
+.notificationBadge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  background: #ff5c5c;
+  color: white;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.profileGroup {
+  position: relative;
+}
+
+.profileButton {
+  border: none;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(15, 76, 129, 0.07);
+  cursor: pointer;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, #0f4c81 0%, #1a6fa0 100%);
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.profileName {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.profileStatus {
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+.dropdownIcon {
+  color: #0f4c81;
+}
+
+.profileMenu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.75rem);
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(15, 76, 129, 0.12);
+  min-width: 220px;
+  border: 1px solid rgba(15, 76, 129, 0.08);
+  overflow: hidden;
+  z-index: 10;
+}
+
+.profileMenu button {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 0.95rem 1rem;
+  text-align: left;
+  color: #22303c;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.profileMenu button:hover {
+  background: #f5f9ff;
+}
+
+@media (max-width: 1024px) {
+  .menuButton {
+    display: inline-flex;
+  }
+
+  .searchGroup {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    padding: 0.9rem 1rem;
+  }
+
+  .profileButton {
+    padding: 0.7rem 0.85rem;
+  }
+}

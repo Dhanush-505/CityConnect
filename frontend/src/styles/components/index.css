@@ -1,0 +1,7 @@
+/* Import all component styles */
+@import './Button.module.css';
+@import './Input.module.css';
+@import './Card.module.css';
+@import './Loader.module.css';
+@import './Modal.module.css';
+@import './Alert.module.css';

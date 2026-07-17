@@ -1,0 +1,91 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  background: #f4f7fb;
+  color: #14213d;
+}
+
+.sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #0f172a 0%, #1e3a8a 100%);
+  color: white;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebarHeader .brand {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.sidebarHeader .role {
+  margin: 4px 0 0;
+  color: #cbd5e1;
+  font-size: 0.92rem;
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  background: transparent;
+}
+
+.navItem.active {
+  background: rgba(255,255,255,0.18);
+}
+
+.icon {
+  font-size: 1.1rem;
+}
+
+.sidebarFooter {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.homeLink,
+.logoutButton {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 12px;
+  text-decoration: none;
+  color: white;
+  background: rgba(255,255,255,0.14);
+  cursor: pointer;
+  text-align: left;
+}
+
+.content {
+  flex: 1;
+  padding: 24px;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .content {
+    padding: 16px;
+  }
+}

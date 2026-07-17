@@ -1,0 +1,20 @@
+.pageShell { display: grid; gap: 1rem; }
+.headerCard { background: var(--surface-card); border: 1px solid var(--border-color); border-radius: 22px; padding: 1.2rem 1.3rem; box-shadow: 0 16px 40px rgba(15, 76, 129, 0.07); }
+.summaryGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
+.summaryCard, .panel { background: var(--surface-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 1rem; box-shadow: 0 12px 28px rgba(15,76,129,0.06); }
+.summaryCard { display: grid; gap: 0.3rem; }
+.contentGrid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1rem; }
+.panel { display: grid; gap: 0.8rem; }
+.field { display: grid; gap: 0.45rem; }
+.field input, .field select, .field textarea { width: 100%; border: 1px solid var(--border-color); border-radius: 12px; padding: 0.72rem 0.8rem; background: var(--surface-elevated); color: var(--text-primary); }
+.stars { display: flex; gap: 0.4rem; }
+.star, .activeStar { border: 0; background: transparent; font-size: 1.35rem; color: #c4c4c4; cursor: pointer; }
+.activeStar { color: #ffb033; }
+.uploadRow, .toggleRow { display: flex; align-items: center; gap: 0.5rem; color: var(--text-muted); }
+.uploadRow input { display: none; }
+.feedbackList { display: grid; gap: 0.75rem; }
+.feedbackCard { background: var(--surface-elevated); border-radius: 16px; padding: 0.9rem; display: grid; gap: 0.4rem; }
+.feedbackHeader { display: flex; justify-content: space-between; align-items: center; }
+.successText { color: #0e8a55; }
+@media (max-width: 900px) { .contentGrid { grid-template-columns: 1fr; } .summaryGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .summaryGrid { grid-template-columns: 1fr; } }

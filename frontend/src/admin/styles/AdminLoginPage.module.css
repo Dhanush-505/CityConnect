@@ -1,0 +1,54 @@
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f4f8fc 0%, #dfefff 100%);
+}
+.card {
+  width: min(100%, 460px);
+  background: white;
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 50px rgba(15, 76, 129, 0.16);
+}
+.header { margin-bottom: 1rem; }
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.74rem;
+  color: #0f4c81;
+  font-weight: 700;
+}
+.form { display: grid; gap: 0.85rem; }
+.field { display: grid; gap: 0.4rem; }
+.field span { font-weight: 600; color: #10233c; }
+.field input {
+  padding: 0.8rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 76, 129, 0.15);
+  outline: none;
+}
+.button {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.85rem 1rem;
+  background: linear-gradient(135deg, #0f4c81, #3d9dfc);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+.error {
+  color: #b33a3a;
+  font-size: 0.92rem;
+}
+.helperBox {
+  margin-top: 1rem;
+  padding: 0.9rem;
+  border-radius: 14px;
+  background: #f4f8fc;
+  color: #34506b;
+}
+@media (max-width: 640px) {
+  .card { padding: 1.2rem; }
+}

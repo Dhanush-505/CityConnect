@@ -1,0 +1,32 @@
+.pageShell { display: grid; gap: 1rem; }
+.headerCard, .panel, .complaintCard { background: var(--surface-card); border: 1px solid var(--border-color); border-radius: 22px; box-shadow: 0 16px 40px rgba(15, 76, 129, 0.07); }
+.headerCard { padding: 1.2rem 1.3rem; }
+.toolbar { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.searchInput { flex: 1; min-width: 240px; }
+.searchInput input, .toolbar select { width: 100%; border: 1px solid var(--border-color); border-radius: 12px; padding: 0.75rem 0.85rem; background: var(--surface-elevated); color: var(--text-primary); }
+.contentGrid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 1rem; }
+.listPane { display: grid; gap: 0.75rem; }
+.complaintCard { border: 1px solid var(--border-color); padding: 1rem; text-align: left; width: 100%; display: grid; gap: 0.5rem; cursor: pointer; }
+.complaintCard.activeCard { border-color: #0f4c81; box-shadow: 0 10px 24px rgba(15,76,129,0.16); }
+.cardTop { display: flex; justify-content: space-between; gap: 0.5rem; }
+.idLabel { font-size: 0.8rem; color: #0f4c81; font-weight: 700; text-transform: uppercase; }
+.cardMeta { display: flex; flex-wrap: wrap; gap: 0.6rem; color: var(--text-muted); }
+.statusBadge { display: inline-flex; align-items: center; border-radius: 999px; padding: 0.3rem 0.7rem; font-size: 0.85rem; }
+.resolved { background: rgba(61,220,151,0.14); color: #0e8a55; }
+.inProgress { background: rgba(15,76,129,0.14); color: #0f4c81; }
+.pending { background: rgba(255, 176, 58, 0.2); color: #c27800; }
+.detailPane { display: grid; gap: 0.9rem; }
+.panel { padding: 1rem 1.1rem; display: grid; gap: 0.8rem; }
+.detailHeader { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.75rem; }
+.detailGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+.detailGrid > div { background: var(--surface-elevated); border-radius: 14px; padding: 0.8rem; }
+.timelineList { display: grid; gap: 0.6rem; }
+.timelineItem { display: flex; gap: 0.6rem; padding: 0.75rem; border-radius: 14px; background: var(--surface-elevated); color: var(--text-muted); }
+.timelineItem.timelineActive { color: var(--text-primary); }
+.timelineIcon { color: #0f4c81; }
+.mapHeader { display: flex; justify-content: space-between; align-items: center; }
+.mapTag { display: inline-flex; gap: 0.3rem; align-items: center; color: #0f4c81; }
+.mapCard { border-radius: 18px; padding: 1rem; min-height: 180px; background: linear-gradient(135deg, rgba(15,76,129,0.12), rgba(61,220,151,0.2)); display: grid; place-items: center; position: relative; }
+.marker { border: 0; border-radius: 50%; width: 54px; height: 54px; font-size: 1.3rem; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+@media (max-width: 900px) { .contentGrid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .detailGrid { grid-template-columns: 1fr; } .detailHeader, .mapHeader { flex-direction: column; align-items: flex-start; } }
