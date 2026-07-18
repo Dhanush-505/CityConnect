@@ -4,6 +4,7 @@ import DashboardLayout from '../dashboard/layout/DashboardLayout';
 import Loader from '../components/common/Loader';
 import axiosInstance from '../api/axios';
 import ComplaintForm from './ComplaintForm';
+import DuplicateAlertModal from '../components/ai/DuplicateAlertModal';
 import styles from '../styles/RaiseComplaint.module.css';
 
 function RaiseComplaintPage() {
@@ -13,6 +14,11 @@ function RaiseComplaintPage() {
   const [submitting, setSubmitting] = useState(false);
   const [alert, setAlert] = useState(null);
   const [geoError, setGeoError] = useState('');
+
+  const [aiSuggestions, setAiSuggestions] = useState(null);
+  const [duplicates, setDuplicates] = useState([]);
+  const [showDuplicateModal, setShowDuplicateModal] = useState(false);
+
   const [formData, setFormData] = useState({
     citizenName: '',
     title: '',
@@ -48,6 +54,34 @@ function RaiseComplaintPage() {
     getProfile();
   }, []);
 
+  // Real-Time AI Auto-Classification Assist Effect
+  useEffect(() => {
+    if (formData.title.length > 5 && formData.description.length > 15) {
+      const timer = setTimeout(async () => {
+        try {
+          const res = await axiosInstance.post('/ai/classify', {
+            title: formData.title,
+            description: formData.description
+          });
+          const aiData = res?.data || res;
+          if (aiData?.category) {
+            setAiSuggestions(aiData);
+            if (!formData.category) {
+              setFormData((curr) => ({
+                ...curr,
+                category: aiData.category,
+                priority: aiData.suggestedPriority || curr.priority
+              }));
+            }
+          }
+        } catch {
+          // Silent AI fallback
+        }
+      }, 600);
+      return () => clearTimeout(timer);
+    }
+  }, [formData.title, formData.description]);
+
   const handleFieldChange = (name) => (event) => {
     const value = event.target.value;
     setFormData((current) => ({ ...current, [name]: value }));
@@ -70,15 +104,7 @@ function RaiseComplaintPage() {
     return nextErrors;
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const nextErrors = validateForm();
-    setErrors(nextErrors);
-    if (Object.keys(nextErrors).length > 0) {
-      setAlert({ type: 'error', message: 'Please correct the highlighted fields.' });
-      return;
-    }
-
+  const submitComplaintData = async () => {
     setSubmitting(true);
     setAlert(null);
 
@@ -108,30 +134,43 @@ function RaiseComplaintPage() {
       setAlert({ type: 'success', message: response?.message || 'Complaint submitted successfully.' });
       window.dispatchEvent(new Event('cityconnect-complaints-updated'));
       localStorage.setItem('cityconnect-complaints-updated', String(Date.now()));
-      setFormData({
-        citizenName: profile?.name || '',
-        title: '',
-        description: '',
-        category: '',
-        landmark: '',
-        priority: 'Medium',
-        contactNumber: profile?.contactNumber || '',
-      });
-      setLatitude('');
-      setLongitude('');
-      setAddress('');
-      setCity('');
-      setStateName('');
-      setCountry('');
-      setPincode('');
-      setImages([]);
-      setTimeout(() => navigate('/dashboard'), 1200);
+      setTimeout(() => navigate('/citizen/my-complaints'), 1500);
     } catch (error) {
-      const message = error?.message || 'Unable to submit complaint right now.';
-      setAlert({ type: 'error', message });
+      setAlert({ type: 'error', message: error?.message || 'Failed to submit complaint. Please try again.' });
     } finally {
       setSubmitting(false);
     }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const nextErrors = validateForm();
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) {
+      setAlert({ type: 'error', message: 'Please correct the highlighted fields.' });
+      return;
+    }
+
+    // AI Duplicate Check before submission
+    try {
+      const dupRes = await axiosInstance.post('/ai/detect-duplicate', {
+        title: formData.title,
+        description: formData.description,
+        category: formData.category,
+        latitude,
+        longitude
+      });
+      const dupData = dupRes?.data || dupRes;
+      if (dupData?.hasDuplicate && dupData?.duplicates?.length > 0 && !showDuplicateModal) {
+        setDuplicates(dupData.duplicates);
+        setShowDuplicateModal(true);
+        return;
+      }
+    } catch {
+      // Proceed if AI check fails
+    }
+
+    await submitComplaintData();
   };
 
   const handleUseCurrentLocation = () => {
@@ -203,6 +242,16 @@ function RaiseComplaintPage() {
           longitude={longitude}
           geoError={geoError}
           images={images}
+        />
+
+        <DuplicateAlertModal
+          isOpen={showDuplicateModal}
+          onClose={() => setShowDuplicateModal(false)}
+          duplicates={duplicates}
+          onProceedAnyway={() => {
+            setShowDuplicateModal(false);
+            submitComplaintData();
+          }}
         />
       </div>
     </DashboardLayout>

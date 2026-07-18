@@ -79,6 +79,23 @@ const complaintSchema = new mongoose.Schema(
     expectedCompletionDate: { type: Date, default: null },
     resolvedDate: { type: Date, default: null },
     closedDate: { type: Date, default: null },
+    slaDeadline: { type: Date, default: null },
+    slaHours: { type: Number, default: 120 },
+    slaStatus: { type: String, enum: ['On Track', 'Near Breach', 'Breached', 'Escalated'], default: 'On Track' },
+    escalationLevel: { type: Number, default: 0 },
+    escalatedAt: { type: Date, default: null },
+    escalationHistory: [
+      {
+        level: { type: Number },
+        escalatedToRole: { type: String },
+        reason: { type: String },
+        timestamp: { type: Date, default: Date.now }
+      }
+    ],
+    votesCount: { type: Number, default: 0 },
+    votedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    isEmergency: { type: Boolean, default: false },
+    emergencyType: { type: String, default: '' },
     timeline: { type: [timelineEntrySchema], default: [] },
   },
   { timestamps: true }
@@ -90,6 +107,9 @@ complaintSchema.index({ status: 1 });
 complaintSchema.index({ priority: 1 });
 complaintSchema.index({ createdAt: -1 });
 complaintSchema.index({ citizenId: 1, createdAt: -1 });
+complaintSchema.index({ assignedFieldWorker: 1, status: 1 });
+complaintSchema.index({ department: 1, status: 1 });
+complaintSchema.index({ category: 1 });
 
 const Complaint = mongoose.model('Complaint', complaintSchema);
 export default Complaint;

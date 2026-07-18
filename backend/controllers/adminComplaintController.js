@@ -4,6 +4,7 @@ import User from '../models/User.js';
 import { sendSuccess, sendError } from '../utils/response.js';
 import { isValidTransition } from '../utils/workflowEngine.js';
 import { createNotification, syncDashboard } from '../utils/notificationService.js';
+import recordAuditLog from '../utils/auditLogger.js';
 
 const isValidObjectId = (id) => mongoose.Types.ObjectId.isValid(id);
 
@@ -122,6 +123,13 @@ export const assignComplaint = async (req, res) => {
 
     addTimelineEntry(complaint, complaint.status, req.user?.name || 'Admin', 'admin', req.body.remarks || 'Assigned to field worker');
     await complaint.save();
+
+    recordAuditLog({
+      req,
+      action: 'ASSIGN_WORKER',
+      module: 'ADMIN_COMPLAINT',
+      details: { complaintId: complaint.complaintId, workerId: worker._id, workerName: worker.name }
+    });
 
     await createNotification({
       userId: worker._id,

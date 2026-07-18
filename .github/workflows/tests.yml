@@ -1,0 +1,31 @@
+name: Automated Test & Quality Assurance Suite
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Backend Dependencies
+        run: |
+          cd backend
+          npm ci
+
+      - name: Verify Backend Modules & Scripts
+        run: |
+          cd backend
+          node -c verify_part8_analytics.js
+          node -c verify_part9_security_qa.js

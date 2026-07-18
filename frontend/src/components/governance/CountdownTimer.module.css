@@ -1,0 +1,39 @@
+.container {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 8px;
+  font-family: monospace, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.onTrack {
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.nearBreach {
+  background: #fefce8;
+  color: #854d0e;
+  border: 1px solid #fef08a;
+}
+
+.overdue {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.75; }
+  100% { opacity: 1; }
+}
+
+.icon {
+  font-size: 1rem;
+}

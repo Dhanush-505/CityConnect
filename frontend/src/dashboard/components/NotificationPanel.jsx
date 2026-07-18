@@ -2,12 +2,16 @@ import { MdNotificationsActive, MdCheckCircle, MdErrorOutline } from 'react-icon
 import styles from '../styles/DashboardComponents.module.css';
 
 function NotificationPanel({ notifications = [] }) {
+  const list = Array.isArray(notifications)
+    ? notifications
+    : (notifications?.notifications || notifications?.items || []);
+
   return (
     <div className={styles.notificationPanel}>
-      {notifications.length === 0 ? (
+      {list.length === 0 ? (
         <div className={styles.emptyState}>No new notifications yet.</div>
       ) : (
-        notifications.slice(0, 5).map((notification) => (
+        list.slice(0, 5).map((notification) => (
           <div key={notification.id || notification._id} className={styles.notificationItem}>
             <div className={styles.notificationIcon}>
               {notification.read ? <MdCheckCircle /> : <MdNotificationsActive />}

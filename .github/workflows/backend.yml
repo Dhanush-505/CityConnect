@@ -1,0 +1,40 @@
+name: Backend CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend.yml'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - 'backend/**'
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./backend
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: './backend/package-lock.json'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Security Vulnerability Audit
+        run: npm audit --audit-level=high || true
+
+      - name: Run Backend Syntax Verification
+        run: node -c server.js

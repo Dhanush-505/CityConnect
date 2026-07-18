@@ -5,6 +5,8 @@ import Department from '../models/Department.js';
 import { sendSuccess, sendError } from '../utils/response.js';
 import { calculateProgress } from '../utils/workflowEngine.js';
 import { createNotification, syncDashboard } from '../utils/notificationService.js';
+import recordAuditLog from '../utils/auditLogger.js';
+import { calculateSLADeadline } from '../utils/slaHelper.js';
 
 const isValidObjectId = (id) => mongoose.Types.ObjectId.isValid(id);
 
@@ -79,6 +81,8 @@ export const createComplaint = async (req, res, next) => {
 
     const citizen = await User.findById(req.user.id);
     const initialStatus = req.body.status || 'Submitted';
+    const priority = req.body.priority || 'Medium';
+    const { deadline: slaDeadline, hours: slaHours } = calculateSLADeadline(new Date(), priority);
 
     const complaint = await Complaint.create({
       citizenId: req.user.id,
@@ -88,8 +92,10 @@ export const createComplaint = async (req, res, next) => {
       description: req.body.description,
       department: req.body.department || mapDepartment(req.body.category),
       category: req.body.category,
-      priority: req.body.priority || 'Medium',
+      priority,
       status: initialStatus,
+      slaDeadline,
+      slaHours,
       complaintImages: complaintImages,
       complaintLocation: req.body.address || req.body.complaintLocation || req.body.landmark || '',
       latitude: req.body.latitude || null,
@@ -144,6 +150,13 @@ export const createComplaint = async (req, res, next) => {
 
     // Real-time synchronization
     syncDashboard(complaint._id, 'Submitted');
+
+    recordAuditLog({
+      req,
+      action: 'RAISE_COMPLAINT',
+      module: 'COMPLAINT',
+      details: { complaintId: complaint.complaintId, title: complaint.title, department: complaint.department }
+    });
 
     res.status(201).json({
       success: true,

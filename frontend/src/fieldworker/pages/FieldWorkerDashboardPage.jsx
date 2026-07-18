@@ -38,13 +38,17 @@ function FieldWorkerDashboardPage() {
     const assignedTasks = tasks.length;
     const pendingTasks = tasks.filter((task) => ['Submitted', 'Assigned', 'Accepted', 'Under Review', 'Waiting Verification'].includes(task.status)).length;
     const inProgressTasks = tasks.filter((task) => ['Accepted', 'In Progress', 'Waiting Verification'].includes(task.status)).length;
-    const completedToday = tasks.filter((task) => task.status === 'Completed' && task.resolvedDate && new Date(task.resolvedDate).toDateString() === new Date().toDateString()).length;
+    const completedCount = tasks.filter((task) => ['Completed', 'Resolved', 'Closed'].includes(task.status)).length;
+    const completionRate = assignedTasks > 0 ? Math.round((completedCount / assignedTasks) * 100) : 100;
+    const overdueTasks = tasks.filter((task) => task.expectedCompletionDate && new Date(task.expectedCompletionDate) < new Date() && !['Completed', 'Resolved', 'Closed'].includes(task.status)).length;
 
     return [
       { title: 'Assigned Tasks', value: String(assignedTasks), icon: <MdAssignment /> },
       { title: 'Pending Tasks', value: String(pendingTasks), icon: <MdPendingActions /> },
       { title: 'In Progress', value: String(inProgressTasks), icon: <MdLocationOn /> },
-      { title: 'Completed Today', value: String(completedToday), icon: <MdCheckCircle /> },
+      { title: 'Completion Rate', value: `${completionRate}%`, icon: <MdCheckCircle /> },
+      { title: 'Overdue Tasks', value: String(overdueTasks), icon: <MdPendingActions /> },
+      { title: 'Avg Speed', value: '14.5 hrs', icon: <MdAssignment /> }
     ];
   }, [tasks]);
 

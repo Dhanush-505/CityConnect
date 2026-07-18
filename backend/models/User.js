@@ -6,13 +6,15 @@ const userSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     phone: { type: String, default: '' },
-    role: { type: String, enum: ['citizen', 'field_worker', 'admin'], default: 'citizen' },
+    role: { type: String, enum: ['citizen', 'field_worker', 'admin', 'super_admin', 'mayor', 'municipal_commissioner', 'executive'], default: 'citizen' },
     department: { type: String, default: '' },
     employeeId: { type: String, default: '' },
     address: { type: String, default: '' },
     city: { type: String, default: '' },
     state: { type: String, default: '' },
     pincode: { type: String, default: '' },
+    earnedBadges: { type: [String], default: [] },
+    points: { type: Number, default: 0 },
     profileImage: {
       publicId: { type: String, default: '' },
       url: { type: String, default: '' }

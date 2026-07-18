@@ -7,6 +7,7 @@ function Navbar() {
       <div className={styles.logo}>CityConnect</div>
       <nav className={styles.navLinks}>
         <Link to="/">Home</Link>
+        <Link to="/public-dashboard">Public Portal</Link>
         <Link to="/login">Login</Link>
         <Link to="/register">Register</Link>
       </nav>

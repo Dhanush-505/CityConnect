@@ -41,8 +41,8 @@ export const adminAuthMiddleware = async (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const user = await User.findById(decoded.id).select('-password');
 
-    if (!user || !['admin', 'superadmin'].includes(user.role)) {
-      return res.status(403).json({ message: 'Admin access required' });
+    if (!user || !['admin', 'superadmin', 'super_admin', 'mayor', 'municipal_commissioner', 'executive'].includes(user.role)) {
+      return res.status(403).json({ message: 'Admin or Executive access required' });
     }
 
     req.user = {

@@ -17,6 +17,20 @@ import departmentRoutes from './routes/departmentRoutes.js';
 import adminComplaintRoutes from './routes/adminComplaintRoutes.js';
 import workerComplaintRoutes from './routes/workerComplaintRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
+import analyticsRoutes from './routes/analyticsRoutes.js';
+import reportRoutes from './routes/reportRoutes.js';
+import systemRoutes from './routes/systemRoutes.js';
+import aiRoutes from './routes/aiRoutes.js';
+import slaRoutes from './routes/slaRoutes.js';
+import governanceRoutes from './routes/governanceRoutes.js';
+import publicRoutes from './routes/publicRoutes.js';
+import surveyRoutes from './routes/surveyRoutes.js';
+import voteRoutes from './routes/voteRoutes.js';
+import emergencyRoutes from './routes/emergencyRoutes.js';
+import { getSystemHealth } from './controllers/systemController.js';
+import securityMiddleware from './middlewares/securityMiddleware.js';
+import sanitizeInput from './middlewares/sanitizeMiddleware.js';
+import { apiLimiter, authLimiter } from './middlewares/rateLimiter.js';
 import errorHandler from './middlewares/errorHandler.js';
 import User from './models/User.js';
 import Department from './models/Department.js';
@@ -40,10 +54,15 @@ const corsOptions = {
   },
 };
 
+app.use(securityMiddleware);
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(sanitizeInput);
 app.use('/uploads', express.static('uploads'));
+
+app.use('/api', apiLimiter);
+app.use('/api/auth/login', authLimiter);
 
 app.use('/api/auth', authRoutes);
 app.use('/api/issues', issueRoutes);
@@ -56,6 +75,17 @@ app.use('/api/departments', departmentRoutes);
 app.use('/api/admin/complaints', adminComplaintRoutes);
 app.use('/api/worker', workerComplaintRoutes);
 app.use('/api/uploads', uploadRoutes);
+app.use('/api/analytics', analyticsRoutes);
+app.use('/api/reports', reportRoutes);
+app.use('/api/ai', aiRoutes);
+app.use('/api/sla', slaRoutes);
+app.use('/api/public', publicRoutes);
+app.use('/api/surveys', surveyRoutes);
+app.use('/api/vote', voteRoutes);
+app.use('/api/emergencies', emergencyRoutes);
+app.use('/api', governanceRoutes);
+app.get('/api/health', getSystemHealth);
+app.use('/api/system', systemRoutes);
 app.use('/api', dashboardRoutes);
 
 app.use((req, res) => {
@@ -113,6 +143,20 @@ const seedDemoUsers = async () => {
         phone: '+91 99999 00005',
         department: 'Drainage & Waste Management',
         employeeId: 'FW-DW-303',
+      },
+      {
+        name: 'Hon. City Mayor',
+        email: 'mayor@cityconnect.com',
+        password: 'Mayor@123',
+        role: 'mayor',
+        phone: '+91 99999 00010',
+      },
+      {
+        name: 'Municipal Commissioner',
+        email: 'commissioner@cityconnect.com',
+        password: 'Commissioner@123',
+        role: 'municipal_commissioner',
+        phone: '+91 99999 00011',
       },
     ];
 

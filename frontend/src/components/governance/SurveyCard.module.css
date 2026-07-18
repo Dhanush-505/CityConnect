@@ -1,0 +1,97 @@
+.card {
+  background: var(--bg-card, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.25rem;
+}
+
+.header {
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main, #0f172a);
+}
+
+.description {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-top: 0.35rem;
+}
+
+.questionList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 1.25rem 0;
+}
+
+.questionItem {
+  background: var(--bg-surface, #f8fafc);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.qText {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+}
+
+.optionsGrid {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.optBtn {
+  padding: 0.4rem 0.85rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #ffffff;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.optBtn:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+.optSelected {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border-color: #2563eb !important;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.submitBtn:hover {
+  opacity: 0.9;
+}
+
+.completedBadge {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  background: #dcfce7;
+  color: #15803d;
+  font-weight: 700;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+}

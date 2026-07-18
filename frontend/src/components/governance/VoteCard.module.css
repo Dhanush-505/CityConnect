@@ -1,0 +1,55 @@
+.card {
+  background: var(--bg-card, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.details {
+  flex: 1;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main, #0f172a);
+}
+
+.meta {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 0.35rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.voteBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: 9999px;
+  border: 1px solid #2563eb;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.voteBtn:hover {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.voted {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border-color: #2563eb !important;
+}

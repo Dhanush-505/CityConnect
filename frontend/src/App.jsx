@@ -2,6 +2,7 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import { SocketProvider } from './context/SocketContext.jsx';
+import AIChatbot from './components/ai/AIChatbot.jsx';
 import HomePage from './pages/HomePage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
@@ -21,11 +22,13 @@ import FieldWorkerTrackerPage from './fieldworker/pages/FieldWorkerTrackerPage.j
 import FieldWorkerNotificationsPage from './fieldworker/pages/FieldWorkerNotificationsPage.jsx';
 import FieldWorkerProfilePage from './fieldworker/pages/FieldWorkerProfilePage.jsx';
 import FieldWorkerSettingsPage from './fieldworker/pages/FieldWorkerSettingsPage.jsx';
+import PublicDashboardPage from './pages/PublicDashboardPage.jsx';
+import ExecutiveDashboardPage from './admin/pages/ExecutiveDashboardPage.jsx';
 import './styles/global.css';
 
 function App() {
   const location = useLocation();
-  const isDashboard = location.pathname.startsWith('/dashboard') || location.pathname.startsWith('/citizen/') || location.pathname.startsWith('/field-worker') || location.pathname.startsWith('/admin');
+  const isDashboard = location.pathname.startsWith('/dashboard') || location.pathname.startsWith('/citizen/') || location.pathname.startsWith('/field-worker') || location.pathname.startsWith('/admin') || location.pathname.startsWith('/executive');
 
   const getStoredUser = () => {
     try {
@@ -57,6 +60,7 @@ function App() {
         <main className="main-content">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/public-dashboard" element={<PublicDashboardPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/forgot-password" element={<div style={{ padding: '2rem', textAlign: 'center' }}>Forgot password page coming soon.</div>} />
@@ -70,7 +74,8 @@ function App() {
             <Route path="/citizen/settings" element={<ProtectedRoute allowedRoles={['citizen']}><SettingsPage /></ProtectedRoute>} />
             <Route path="/admin" element={<AdminLoginPage />} />
             <Route path="/admin/login" element={<AdminLoginPage />} />
-            <Route path="/admin/dashboard" element={<ProtectedRoute allowedRoles={['admin']}><AdminDashboardPage /></ProtectedRoute>} />
+            <Route path="/admin/dashboard" element={<ProtectedRoute allowedRoles={['admin', 'super_admin', 'mayor', 'municipal_commissioner']}><AdminDashboardPage /></ProtectedRoute>} />
+            <Route path="/executive/dashboard" element={<ProtectedRoute allowedRoles={['admin', 'super_admin', 'mayor', 'municipal_commissioner', 'executive']}><ExecutiveDashboardPage /></ProtectedRoute>} />
             <Route path="/field-worker" element={<ProtectedRoute allowedRoles={['field_worker']}><FieldWorkerDashboardPage /></ProtectedRoute>} />
             <Route path="/field-worker/tasks" element={<ProtectedRoute allowedRoles={['field_worker']}><FieldWorkerTasksPage /></ProtectedRoute>} />
             <Route path="/field-worker/tracker" element={<ProtectedRoute allowedRoles={['field_worker']}><FieldWorkerTrackerPage /></ProtectedRoute>} />
@@ -80,6 +85,7 @@ function App() {
           </Routes>
         </main>
         {!isDashboard && <Footer />}
+        <AIChatbot />
       </div>
     </SocketProvider>
   );

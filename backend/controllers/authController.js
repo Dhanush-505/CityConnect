@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
+import recordAuditLog from '../utils/auditLogger.js';
 
 const createToken = (user) => {
   return jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '7d' });
@@ -85,6 +86,7 @@ export const register = async (req, res, next) => {
     });
 
     const token = createToken(user);
+    recordAuditLog({ req: { user: { email: user.email, name: user.name, id: user._id, role: user.role } }, action: 'USER_REGISTERED', module: 'AUTH', details: { email: user.email, role: user.role } });
     res.status(201).json({ user: buildUserPayload(user), token });
   } catch (error) {
     next(error);
@@ -107,6 +109,7 @@ export const login = async (req, res, next) => {
     }
 
     const token = createToken(user);
+    recordAuditLog({ req: { user: { email: user.email, name: user.name, id: user._id, role: user.role } }, action: 'USER_LOGIN', module: 'AUTH', details: { email: user.email, role: user.role } });
     res.json({ user: buildUserPayload(user), token });
   } catch (error) {
     next(error);
