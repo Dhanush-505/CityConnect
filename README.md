@@ -50,7 +50,7 @@ Internet Users ──► React 18 SPA (Vite) ──► Node.js / Express API ─
 
 ---
 
-## 🔑 Demo Accounts
+##  Demo Accounts
 
 | Role | Email | Password | Access Scope |
 | :--- | :--- | :--- | :--- |
@@ -62,7 +62,7 @@ Internet Users ──► React 18 SPA (Vite) ──► Node.js / Express API ─
 
 ---
 
-## ⚡ Local Setup & Installation
+##  Local Setup & Installation
 
 ### 1. Clone & Install Dependencies
 ```bash
