@@ -1,12 +1,12 @@
-# 🏢 CityConnect — Smart Municipal Grievance Management Platform
+#  CityConnect — Smart Municipal Grievance Management Platform
 
 **CityConnect v1.0.0** is an enterprise-grade, full-stack Smart City Grievance Management System designed to streamline urban complaint reporting, real-time tracking, field officer dispatch, location intelligence, and municipal analytics.
 
 ---
 
-## 🌟 Key Features Across Modules
+##  Key Features Across Modules
 
-### 👤 Citizen Portal
+###  Citizen Portal
 - **Role-Based Authentication**: Secure JWT login with password hashing.
 - **Geo-Tagged Complaint Registration**: Leaflet/OpenStreetMap location picker with address auto-completion.
 - **Media Uploads**: Initial photo evidence uploads backed by Cloudinary & local storage.
@@ -14,19 +14,19 @@
 - **Instant Notifications**: Socket.IO real-time alert notifications for status changes.
 - **Citizen Feedback System**: Rate completed resolutions (1 to 5 stars) and submit feedback comments.
 
-### 🏛️ Municipal Admin Command Panel
+###  Municipal Admin Command Panel
 - **Executive Command Center**: Live grievance queue with department filters and priority indicators.
 - **System Health Diagnostics**: Real-time server uptime, DB status, API response speed, and active user metrics.
 - **Workflow & Reassignment Control**: Approve submissions, reject invalid requests, set expected completion dates, and reassign officers.
 - **Verification Engine**: Review completion proof photos uploaded by field workers before final closure.
 - **Broadcast Announcements**: Send city-wide notifications for maintenance, safety alerts, or public service updates.
 
-### 👷 Field Officer Portal
+###  Field Officer Portal
 - **Task List Workspace**: Department-specific assigned task queue (Electricity, Water Supply, Drainage & Waste Management).
 - **Mobile-Friendly Workflow**: Quick status updates (*Accepted → Travelling → Work Started → In Progress → Completed*).
 - **Progress & Completion Evidence**: Upload work progress photos and final completion proof.
 
-### 📊 Analytics, Reports & Intelligence
+###  Analytics, Reports & Intelligence
 - **10 Executive KPI Cards**: Total Complaints, Open, Assigned, In Progress, Completed, Closed, Rejected, Avg Resolution Time, Active Officers, Citizen Satisfaction Rate.
 - **7 Interactive Chart.js Visualizations**: Status Pie Chart, Department Bar Chart, Monthly Trend Line Chart (12 Months), Daily Activity Area Chart (30 Days), Priority Doughnut Chart, Top Categories Horizontal Bar Chart, Department Stacked Performance.
 - **Geographic Density Heatmaps**: Leaflet map displaying complaint hotspots and priority intensity clusters.
@@ -35,7 +35,7 @@
 
 ---
 
-## 🏗️ System Architecture & Technology Stack
+##  System Architecture & Technology Stack
 
 ```text
 Internet Users ──► React 18 SPA (Vite) ──► Node.js / Express API ──► MongoDB Atlas Cluster
@@ -75,30 +75,7 @@ cd ../frontend
 npm install
 ```
 
-### 2. Environment Configuration
-Copy `.env.example` templates:
-```bash
-# Backend
-cp backend/.env.example backend/.env
-
-# Frontend
-cp frontend/.env.example frontend/.env
-```
-
-### 3. Run Development Server
-```bash
-# Terminal 1 - Backend API (http://localhost:5000)
-cd backend
-npm run dev
-
-# Terminal 2 - Frontend App (http://localhost:5173)
-cd frontend
-npm run dev
-```
-
----
-
-## 📂 Project Repository Structure
+## Project Repository Structure
 
 ```text
 CityConnect/
@@ -138,5 +115,3 @@ CityConnect/
 
 ---
 
-## 📜 License
-This project is licensed under the [MIT License](LICENSE).
